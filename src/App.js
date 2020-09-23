@@ -1,20 +1,26 @@
 import React, { useEffect, useState } from 'react';
-import './App.css';
 import axios from 'axios';
 import JSONPretty from 'react-json-pretty';
 import 'react-json-pretty/themes/monikai.css';
-import { Grid, TextField, Button, Paper, LinearProgress, CircularProgress } from '@material-ui/core';
+import { Grid, TextField, Button, Paper, CircularProgress } from '@material-ui/core';
 import FormLabel from '@material-ui/core/FormLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import Checkbox from '@material-ui/core/Checkbox';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
+const classes = {
+  flexCenter : { display: 'flex', justifyContent: 'center' },
+  textJustify : { textAlign: 'justify' },
+  removeTextDecoration : { textDecoration: 'none'  },
+  margin1 : { margin: '8px' },
+  marginAndPadding3 : { padding: '24px', margin: '24px' }
+}
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -35,7 +41,7 @@ function App() {
   const [id, setId] = useState(undefined);
   const [value, setValue] = useState({
     ...history,
-    redirectURI: 'http://localhost:3000/',
+    redirectURI: String(window.location.origin)+"/",
   });
   const [patreonLink, setPatreonLink] = useState(encodeURI(`https://www.patreon.com/oauth2/authorize?response_type=code&client_id=${value.clientID}&redirect_uri=${value.redirectURI}&scope=${' '}`))
   const [selectedEdnpoints, setSelectedEndpoints] = useState(parsedStoredEndpoints)
@@ -92,7 +98,7 @@ function App() {
   const obtainUserDetails = async (codeFromPatreon) => {
     setLoading(true)
     let response = await axios({
-      url: 'http://localhost:8080/',
+      url: `:8080/`,
       method: 'POST',
       data: {
         ...value,
@@ -207,26 +213,26 @@ function App() {
               </FormGroup>
             </FormControl>
           </Grid>
-          <Grid item md={12} style={{ display: 'flex', justifyContent: 'center' }}>
-            <a href={patreonLink} style={{ textDecoration: 'none' }}>
-              <Button variant='contained' color='secondary' style={{ margin: '10px' }}>
+          <Grid item md={12} style={classes.flexCenter}>
+            <a href={patreonLink} style={classes.removeTextDecoration}>
+              <Button variant='contained' color='secondary' style={classes.margin1}>
                 Log in with Patreon
         </Button>
             </a>
-            <a href={'/'} style={{ textDecoration: 'none' }}>
-              <Button variant='contained' color='secondary' style={{ margin: '10px' }} onClick={() => localStorage.clear()}>
+            <a href={'/'} style={classes.removeTextDecoration}>
+              <Button variant='contained' color='secondary' style={classes.margin1} onClick={() => localStorage.clear()}>
                 Reset
       </Button>
             </a>
           </Grid>
         </Grid>
       </Paper>
-      <Paper style={{ padding: '24px', margin: '24px' }}>
+      <Paper style={classes.marginAndPadding3}>
         <Grid container spacing={3} >
           <Grid item>
             <Typography variant='h5'>Output</Typography>
           </Grid>
-          {loading && <Grid item md={12} style={{ display: 'flex', justifyContent: 'center' }}><CircularProgress color="secondary" /></Grid>}
+          {loading && <Grid item md={12} style={classes.flexCenter}><CircularProgress color="secondary" /></Grid>}
           <Grid item md={12}>
             {data && Object.entries(data).map(([key, value]) => {
               return (
@@ -237,7 +243,7 @@ function App() {
                     <Typography >{key}</Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                    <JSONPretty id="json-pretty" data={value} style={{ textAlign: 'justify', margin: '10px', }}></JSONPretty>
+                    <JSONPretty id="json-pretty" data={value} style={{...classes.textJustify,...classes.margin1 }}></JSONPretty>
                   </AccordionDetails>
                 </Accordion>
               )
