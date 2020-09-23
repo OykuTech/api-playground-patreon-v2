@@ -18,11 +18,12 @@
     "react-scripts": "3.4.1"
   },
   "scripts": {
-    "start": "pm2 start server.js && react-scripts start",
+    "start": "node server.js",
+    "dev_start": "pm2 start server.js && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "stop": "pm2 stop server.js"
+    "dev_stop": "pm2 stop server.js"
   },
   "eslintConfig": {
     "extends": "react-app"

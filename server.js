@@ -6,6 +6,8 @@ let axios = require('axios');
 app.use(cors());
 app.use(express.json())
 
+app.use(express.static("build"));
+
 app.post("/", async function (req, res) {
   const responseObject = {};
   const requestBody = req.body
