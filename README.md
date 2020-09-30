@@ -5,8 +5,8 @@
 [Try it Online](https://api-playground-patreon-v2.glitch.me/)
 
 
-[![Patreon API v2 Playground Screenshot](https://github.com/OykuTech/api-playground-patreon-v2/screenshots/playground1.png)](https://api-playground-patreon-v2.glitch.me/)
-[![Patreon API v2 Playground Screenshot](https://github.com/OykuTech/api-playground-patreon-v2/screenshots/playground2.png)](https://api-playground-patreon-v2.glitch.me/)
+[![Patreon API v2 Playground Screenshot](https://github.com/OykuTech/api-playground-patreon-v2/blob/master/screenshots/playground2.png)](https://api-playground-patreon-v2.glitch.me/)
+[![Patreon API v2 Playground Screenshot](https://github.com/OykuTech/api-playground-patreon-v2/blob/master/screenshots/playground1.png)](https://api-playground-patreon-v2.glitch.me/)
 
 
 ## Overview
