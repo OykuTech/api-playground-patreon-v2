@@ -23,11 +23,10 @@ You can try out the Patreon API v2 Playground on its [Live app](https://api-pla
 You can also download and try on your local machine as well. Follow the instructions (below) to try it out locally.
 
 **What the Patreon API v2 Playground Isn't**
-***Patreon API v2 Playground*** is not an official tool provided by Patreon.
 
-***Patreon API v2 Playground*** does not represent any guarantees of patterns or design principles used at Patreon.
-
-***Patreon API v2 Playground*** does not persist any data that you enter.
+* ***Patreon API v2 Playground*** is not an official tool provided by Patreon.
+* ***Patreon API v2 Playground*** does not represent any guarantees of patterns or design principles used at Patreon.
+* ***Patreon API v2 Playground*** does not persist any data that you enter.
 
 ## Trying it in local machine
 
